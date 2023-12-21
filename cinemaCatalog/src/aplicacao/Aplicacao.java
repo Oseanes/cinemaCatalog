@@ -61,9 +61,9 @@ public class Aplicacao {
                             System.out.println("\n\tDIRETOR DO FILME");
                             System.out.println(diretor.getNome() + ": " + diretor.getDescricao());
                         }
-                        System.out.println("\n\tATORES DO FILME");
+
                         atores.stream().forEach( ator -> {
-                            System.out.println(ator.getNome() + ":" + ator.getDescricao());
+                            System.out.println("\n\tATORES DO FILME\n" + ator.getNome() + ":" + ator.getDescricao());
                         });
                         break;
                     case 3:

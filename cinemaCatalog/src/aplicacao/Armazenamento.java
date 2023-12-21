@@ -19,7 +19,6 @@ public class Armazenamento {
             }
         }
         throw new RuntimeException("Esse FILME NÃO está cadastrado!");
-        //return null;
     }
 
     public void salvarFilme(Filme filme){

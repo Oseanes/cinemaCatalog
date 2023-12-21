@@ -12,19 +12,18 @@ public class Armazenamento {
     }
 
     public Filme buscarFilme(String nome){
+
         for (Filme filme: this.filmes){
             if(filme.getNome().equals(nome)){
                 return filme;
             }
         }
-        return null;
+        throw new RuntimeException("Esse FILME NÃO está cadastrado!");
+        //return null;
     }
 
     public void salvarFilme(Filme filme){
         this.filmes.add(filme);
     }
 
-    public void associarAtorFilme(){
-
-    }
 }

@@ -1,13 +1,11 @@
 package aplicacao;
 
-import filme.Artista;
 import filme.Ator;
 import filme.Diretor;
 import filme.Filme;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Aplicacao {
@@ -24,7 +22,7 @@ public class Aplicacao {
         boolean on = true;
 
         Scanner input = new Scanner(System.in);
-        Armazenamento armazenamento = new Armazenamento();
+        Catalogo catalogo = new Catalogo();
         Filme filme;
         Diretor diretor;
 
@@ -47,7 +45,7 @@ public class Aplicacao {
                         System.out.println(" Qual o nome do filme?");
                         nomeFilme = input.nextLine().toLowerCase();
 
-                        filme = armazenamento.buscarFilme(nomeFilme);
+                        filme = catalogo.buscarFilme(nomeFilme);
                         diretor = filme.getDiretor();
                         atores = filme.getAtores();
 
@@ -62,14 +60,17 @@ public class Aplicacao {
                             System.out.println(diretor.getNome() + ": " + diretor.getDescricao());
                         }
 
-                        atores.stream().forEach( ator -> {
-                            System.out.println("\n\tATORES DO FILME\n" + ator.getNome() + ":" + ator.getDescricao());
-                        });
+                        if(atores != null){
+                            System.out.println("\n\tATORES DO FILME\n" );
+                            atores.stream().forEach( ator -> {
+                                System.out.println(ator.getNome() + ":" + ator.getDescricao());
+                            });
+                        }
                         break;
                     case 3:
                         System.out.println(" A qual filme deseja atribuir o Diretor?");
                         nomeFilme = input.nextLine().toLowerCase();
-                        filme = armazenamento.buscarFilme(nomeFilme);
+                        filme = catalogo.buscarFilme(nomeFilme);
 
                         System.out.println("Qual o nome do Diretor?");
                         nomeDiretor = input.nextLine();
@@ -78,9 +79,8 @@ public class Aplicacao {
                         sobreDiretor = input.nextLine();
 
                         diretor = new Diretor(nomeDiretor, sobreDiretor);
-
-
                         filme.setDiretor(diretor);
+
                         break;
                     case 2:
 
@@ -88,7 +88,7 @@ public class Aplicacao {
 
                         System.out.println("Qual filme deseja atribuir o Ator?\n ");
                         nomeFilme = input.nextLine();
-                        filme = armazenamento.buscarFilme(nomeFilme);
+                        filme = catalogo.buscarFilme(nomeFilme);
 
                         System.out.println("Qual o nome do Ator?");
                         nomeAtor = input.nextLine().toLowerCase();
@@ -115,7 +115,7 @@ public class Aplicacao {
 
                         LocalDate dataLancamento = 	LocalDate.of(ano,mes,dia);
                         filme = new Filme(nomeFilme, descricaoFilme, dataLancamento);
-                        armazenamento.salvarFilme(filme);
+                        catalogo.salvarFilme(filme);
                         break;
                     case 0:
                         on = false;

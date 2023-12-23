@@ -4,10 +4,10 @@ import filme.Filme;
 
 import java.util.ArrayList;
 
-public class Armazenamento {
+public class Catalogo {
     private ArrayList<Filme> filmes;
 
-    public Armazenamento(){
+    public Catalogo(){
         this.filmes =  new ArrayList<Filme>();
     }
 
